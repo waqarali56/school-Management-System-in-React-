@@ -1,26 +1,24 @@
-import React,{useEffect}from "react";
+import React from "react";
 import styles from "./teacher.module.css";
 import Students from "../Students";
 import { useAtom } from "jotai";
-import { ClassAtom, StudentAtom, StudentOfClass } from "../jotai";
+import { ClassAtom, StudentAtom } from "../jotai";
+import { classCode } from "../data";
+
 
 export default function TeacherDashBoard() {
-  const [class1, setclass1] = useAtom(ClassAtom);
-  const [studentOfClass, setStudentOfClass] = useAtom(StudentOfClass);
+  
+  const [Class, setClass] = useAtom(ClassAtom);
   const [students, setStudents] = useAtom(StudentAtom);
 
-  useEffect(() => {
-    
-    setStudentOfClass( students.filter(student => student.class === class1));
-  
-  }, [class1]);
+ 
 
   return (
     <div className={styles.container}>
       <div className={styles.navbar}>
-        <button className={styles.class} onClick={()=>setclass1('8th')}>8th class</button>
-        <button className={styles.class} onClick={()=>setclass1('9th')}>9th class</button>
-        <button className={styles.class} onClick={()=>setclass1('10th')}>10th class</button>
+        <button className={styles.class} onClick={()=>setClass(classCode.eight)}>8th class</button>
+        <button className={styles.class} onClick={()=>setClass(classCode.nine)}>9th class</button>
+        <button className={styles.class} onClick={()=>setClass(classCode.ten)}>10th class</button>
       </div>
       <div className={styles.studentContainer}>
         <Students />

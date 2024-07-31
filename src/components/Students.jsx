@@ -2,24 +2,16 @@ import React, { useState } from 'react';
 
 import styles from './Teacher/teacher.module.css';
 import{useAtom} from 'jotai';
-import { ClassAtom, StudentAtom, StudentOfClass } from './jotai';
+import { ClassAtom, StudentAtom } from './jotai';
 
 
 
 export default function Students() {
   const [students, setStudents] = useAtom(StudentAtom);
-  const [studentOfClass, setStudentOfClass] = useAtom(StudentOfClass);
-  const [class1, setclass1] = useAtom(ClassAtom);
+  const [Class, setClass] = useAtom(ClassAtom);
 
   const toggleAttendance = (regNumber) => {
     setStudents((prevStudents) =>
-      prevStudents.map((s) =>
-        s.registrationNumber === regNumber
-          ? { ...s, present: !s.present }
-          : s
-      )
-    );
-    setStudentOfClass((prevStudents) =>
       prevStudents.map((s) =>
         s.registrationNumber === regNumber
           ? { ...s, present: !s.present }
@@ -30,7 +22,7 @@ export default function Students() {
 
   return (
     <div>
-      <h2 >{class1}</h2>
+      <h2 >{Class}</h2>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>
@@ -41,7 +33,7 @@ export default function Students() {
           </tr>
         </thead>
         <tbody>
-          {studentOfClass.map((s) => (
+          {students.filter(student => student.class === Class).map((s) => (
           
             <tr key={s.registrationNumber} className={styles.tr}>
               <td className={styles.td}>{s.registrationNumber}</td>

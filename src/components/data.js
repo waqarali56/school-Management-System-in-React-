@@ -27,7 +27,15 @@ export const teachers = [
     }
   ];
 
+  export const classCode = {
+    eight: "8th",
+    nine: "9th",
+    ten: "10th",
+    }
+
+
   export const students = [
+
     { name: "Alice Johnson", registrationNumber: "REG123", class: "8th", present: false },
     { name: "Bob Smith", registrationNumber: "REG124", class: "9th", present: false },
     { name: "Charlie Brown", registrationNumber: "REG125", class: "10th", present: false },
