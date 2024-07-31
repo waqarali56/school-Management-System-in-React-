@@ -1,0 +1,94 @@
+
+.container
+{
+    height: inherit;
+    width: inherit;
+    background-color: rgb(122, 109, 90);
+    display: flex;
+}
+
+.navbar
+{
+    background-color: aqua;
+ width: 15%;
+ display: flex;
+flex-direction: column;
+}
+.class
+{
+    background-color: rgb(4, 52, 52);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    
+}
+.class:hover
+{
+    background-color: rgb(3, 31, 31);
+}
+
+.studentContainer
+{
+    background-color: rgb(22, 58, 46);
+    width: 85%;
+    
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .th, .td {
+    padding: 12px 15px;
+  }
+  
+  .thead {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .th {
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tr:hover {
+    background-color: #5f5e5e;
+  }
+  
+  /* Button Styling */
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .button:hover {
+    background-color: #45a049;
+  }
+  
+  .buttonAbsent {
+    background-color: #f44336;
+  }
+  
+  .buttonAbsent:hover {
+    background-color: #e53935;
+  }
+  
