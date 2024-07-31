@@ -70,18 +70,14 @@ body{
 }
 
 
-
-
-.mainContainer
-{
-   background-color:chocolate;
-    height: 676px;
+.mainContainer {
+    background-color: chocolate;
+    min-height: 670px;  /* Minimum height */
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-
 }
+
 
 
 
