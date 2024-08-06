@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-import styles from './Teacher/teacher.module.css';
+import styles from './teacher.module.css';
 import{useAtom} from 'jotai';
-import { ClassAtom, StudentAtom } from './jotai';
+import { ClassAtom, StudentAtom, teacherStatus } from '../jotai';
 
 
 
-export default function Students() {
+
+export default function StudentsList() {
   const [students, setStudents] = useAtom(StudentAtom);
   const [Class, setClass] = useAtom(ClassAtom);
 
@@ -22,7 +23,6 @@ export default function Students() {
 
   return (
     <div>
-      <h2 >{Class}</h2>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>

@@ -1,19 +1,23 @@
-import React from 'react'
-import{useAtom} from 'jotai';
-import TeacherLoginPage from './TeacherLoginPage.jsx';
-import TeacherDashBoard from './TeacherDashBoard.jsx';
-import { status } from '../jotai.js';
+import React from "react";
+import { useAtom } from "jotai";
+import TeacherLoginPage from "./TeacherLoginPage.jsx";
+import TeacherDashBoard from "./TeacherDashBoard.jsx";
+import { ClassAtom, teacherStatus } from "../jotai.js";
+import styles from "./teacher.module.css";
 
 export default function Teacher() {
-
-   
-    const [teacherLoginStatus,setTeacherLoginStatus]=useAtom(status);
-
- 
+  const [teacherLoginStatus, setTeacherLoginStatus] = useAtom(teacherStatus);
+  const [Class, setClass] = useAtom(ClassAtom);
 
   return (
-   <>
-   {teacherLoginStatus===false?<TeacherLoginPage/>:<TeacherDashBoard/>}
-   </>
-  )
+ 
+      
+      <div>
+        {teacherLoginStatus === false ? (
+          <TeacherLoginPage />
+        ) : (
+          <TeacherDashBoard />
+        )}
+      </div>
+  );
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './layout.module.css';
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer id={styles.footer}>
@@ -13,16 +15,24 @@ export default function Footer() {
     <h2>Quick Links</h2>
     <ul>
       <li>
-        <a href="#">Home</a>
+      <Link to="/Home">
+          Home
+        </Link>
       </li>
       <li>
-        <a href="#">About</a>
+      <Link to="/Admin">
+          Admin Pannel
+        </Link>
       </li>
       <li>
-        <a href="#">Services</a>
+      <Link to="/Teacher">
+            Teacher Pannel
+          </Link>
       </li>
       <li>
-        <a href="#">Contact</a>
+      <Link to="/Student">
+        Student Pannel
+        </Link>
       </li>
     </ul>
   </div>

@@ -1,41 +1,162 @@
 
+
+
+.teacher_body
+{
+  height: inherit;
+  width: inherit;
+  display: flex;
+}
+
 .container
 {
     height: inherit;
     width: inherit;
     background-color: rgb(122, 109, 90);
     display: flex;
+    flex-direction: column;
+    width: 85%;
 }
+
+.userLogin
+{
+   
+    background-color: rgb(77, 77, 74,0.6);
+    height: fit-content;
+    width: 400px;
+    overflow: hidden;
+    border: solid 1px rgb(255, 255, 255);
+    margin: auto;
+}
+.userLogin .title
+{
+    font-size: 40px;
+   
+    background-color:#5363b4;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-bottom: solid 1px rgb(255, 255, 255);
+}
+
+
+
+
+.inputContainer 
+{
+    margin: 20px 20px;
+    font-size: 25px;
+}
+
+
+.inputContainer .inputDiv
+{
+   
+    margin-bottom: 20px;
+
+}
+
+.inputContainer .inputDiv input
+{  
+    width: 98%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.inputContainer .submit input
+{
+    background-color: green;
+    color: white;
+    font-size: 16px;
+    width: 80px;
+    height: 35px;
+    float: right;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.inputContainer .submit input:hover
+{
+    border: white 2px solid;
+}
+
+
+
 
 .navbar
 {
-    background-color: aqua;
- width: 15%;
- display: flex;
-flex-direction: column;
+  background-color: rgb(7, 50, 50);
+  width: 15%;
+  display: flex;
+  flex-direction: column;
 }
-.class
+.header
 {
-    background-color: rgb(4, 52, 52);
-    height: 50px;
+  background-color: rgb(43, 43, 109);
+  display: flex;
+  height: 47px;
+justify-content:space-around;
+align-items: center;
+}
+.header div
+{  
+display: flex;
+  align-items: center;
+  justify-content:space-between;
+  height: 60px;
+  margin: 0px 30px;
+}
+.header button
+{
+    background-color: #028c00;
+    margin-right: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header button:hover
+{
+  background-color: #014300;
+}
+
+.item
+{
+    border:none;
+    background-color: transparent;
+    height: 47px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
+    border-bottom: 1px solid gray;
     color: white;
     
 }
-.class:hover
+.item:hover
 {
     background-color: rgb(3, 31, 31);
 }
 
-.studentContainer
+.innerContainer
 {
     background-color: rgb(22, 58, 46);
-    width: 85%;
+    height: 610px;
+    overflow-y: scroll;
+
     
 }
+
+
 
 .table {
     width: 100%;
@@ -45,7 +166,8 @@ flex-direction: column;
   }
   
   .th, .td {
-    padding: 12px 15px;
+    padding: 5px 50px;
+    height: 36px;
   }
   
   .thead {
