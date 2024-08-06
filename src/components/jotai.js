@@ -3,12 +3,23 @@ import { students as initialStudents } from './data.js';
 import { classes as initialClassess } from './data.js';
 import { teachers as initialTeachers } from './data.js';
 
+
+
+const getInitialLoginState = (key) => {
+  const storedValue = localStorage.getItem(key);
+  return storedValue ? JSON.parse(storedValue) : false;
+};
+
+export const teacherLoginStatus = atom(getInitialLoginState('teacherLogin'));
+export const adminLoginStatus = atom(getInitialLoginState('adminLogin'));
+export const studentLoginStatus = atom(getInitialLoginState('studentLogin'));
+
+
+
 export const loginEmailAtom=atom('');
 export const loginPasswordAtom=atom('');
-export const adminLoginEmailAtom=atom('');
-export const adminLoginPasswordAtom=atom('');
-export const teacherStatus=atom(false);
-export const adminStatus=atom(false);
+
+
 
 export const ClassAtom=atom('');
 

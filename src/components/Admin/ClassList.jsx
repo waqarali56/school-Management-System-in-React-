@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import React from 'react';
+import React, { useState } from 'react';
 import { classesAtom } from '../jotai';
 import styles from './admin.module.css';
 import { Link} from "react-router-dom";
@@ -12,6 +12,31 @@ import { FaEdit } from "react-icons/fa";
 export default function ClassList() {
 
   const [classes, setClasses] = useAtom(classesAtom);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 8;
+  const totalPages=(classes.length)/(itemPerPage);
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const endIndex = (currentPage) * itemPerPage;
+  const rows = classes.slice(startIndex, endIndex);
+
+  
+
+  function HandleNextPage() {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+  
+  function HandlePrevsPage() {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  
+  
+  
+
 
   function HandleDelete(object)
   {
@@ -19,13 +44,19 @@ export default function ClassList() {
      setClasses(Newclasses);
   }
 
+
   return (
     
         <>
       
     <div className={styles.lists_container}>
+    <caption className={styles.caption}><h3>Class List</h3>
+        <Link to="/Admin/AddClass">
+     <button>Add Class</button>
+   </Link>
+        </caption>
         <table className={styles.table}>
-        <caption className={styles.caption}>Class List</caption>
+       
         <thead className={styles.thead}>
           <tr>
           <th className={styles.th}>ClassCode</th>
@@ -49,12 +80,10 @@ export default function ClassList() {
           ))}
         </tbody>
       </table>
-    </div>
-     <div className={styles.addButtonContainer}>
-     <Link to="/Admin/AddClass">
-     <button>Add Class</button>
-   </Link>
-     </div>
+      <div className={styles.pageBtnContainer}> 
+          <button onClick={HandlePrevsPage}>Prev</button><p>{currentPage}</p><button onClick={HandleNextPage}>Next</button>
+        </div>
+    </div>  
      </>
     
   )

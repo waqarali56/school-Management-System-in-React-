@@ -11,6 +11,33 @@ export default function StudentsList() {
   const [students, setStudents] = useAtom(StudentAtom);
   const [Class, setClass] = useAtom(ClassAtom);
 
+  const studentsOfClass=students.filter(student => student.class === Class)
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 8;
+  const totalPages=(studentsOfClass.length)/(itemPerPage);
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const endIndex = (currentPage) * itemPerPage;
+  const rows = studentsOfClass.slice(startIndex, endIndex);
+
+  
+
+  function HandleNextPage() {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+  
+  function HandlePrevsPage() {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  
+  
+  
+
+
   const toggleAttendance = (regNumber) => {
     setStudents((prevStudents) =>
       prevStudents.map((s) =>
@@ -33,7 +60,7 @@ export default function StudentsList() {
           </tr>
         </thead>
         <tbody>
-          {students.filter(student => student.class === Class).map((s) => (
+          {studentsOfClass.map((s) => (
           
             <tr key={s.registrationNumber} className={styles.tr}>
               <td className={styles.td}>{s.registrationNumber}</td>
@@ -51,6 +78,9 @@ export default function StudentsList() {
           ))}
         </tbody>
       </table>
+      <div className={styles.pageBtnContainer}> 
+          <button onClick={HandlePrevsPage}>Prev</button><p>{currentPage}</p><button onClick={HandleNextPage}>Next</button>
+        </div>
     </div>
   );
 }

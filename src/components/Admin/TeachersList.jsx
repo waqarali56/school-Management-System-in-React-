@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './admin.module.css';
 import{useAtom} from 'jotai';
 import { teachersAtom } from '../jotai';
@@ -9,6 +9,32 @@ import { FaEdit } from "react-icons/fa";
 export default function TeachersList() {
 
     const [teachers, setTeachers] = useAtom(teachersAtom);
+    
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 8;
+  const totalPages=(teachers.length)/(itemPerPage);
+  const startIndex = (currentPage - 1) * itemPerPage;
+  const endIndex = (currentPage) * itemPerPage;
+  const rows = teachers.slice(startIndex, endIndex);
+
+  
+
+  function HandleNextPage() {
+   
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+  
+  function HandlePrevsPage() {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  
+ 
+  
+
 
     function HandleDelete(object)
     {
@@ -16,18 +42,19 @@ export default function TeachersList() {
        setTeachers(NewTeachers);
     }
 
-    function HandleEdit(object)
-    { 
-    
-    }
+   
   
     
   return (
     <>
     <div className={styles.lists_container}>
-     
+    <caption className={styles.caption}>Teachers List
+       <Link to="/Admin/AddTeacher">
+          <button >Add Teacher</button>
+        </Link>
+       </caption>
        <table className={styles.table}>
-       <caption className={styles.caption}>Teachers List</caption>
+     
         <thead className={styles.thead}>
           <tr>
             <th className={styles.th}>ID</th>
@@ -47,21 +74,17 @@ export default function TeachersList() {
               <td className={styles.td}>{s.email}</td>
               <td className={styles.td}>{s.age}</td>
               <td className={styles.td}>{s.gender}</td>
-              <td className={styles.td}><button className={styles.delete} onClick={()=>{HandleDelete(s)}}><MdDelete /></button><button className={styles.edit} onClick={()=>{HandleEdit(s)}}><FaEdit /></button></td>
+              <td className={styles.td}><button className={styles.delete} onClick={()=>{HandleDelete(s)}}><MdDelete /></button><button className={styles.edit} ><FaEdit /></button></td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <div className={styles.pageBtnContainer}> 
+          <button onClick={HandlePrevsPage}>Prev</button><p>{currentPage}</p><button onClick={HandleNextPage}>Next</button>
+        </div>
       
     </div>
-   <div className={styles.addButtonContainer}>
-   <Link to="/Admin/AddTeacher">
-          <button >Add Teacher</button>
-        </Link>
-   </div>
-   
-   
-   
     </>
   )
 }

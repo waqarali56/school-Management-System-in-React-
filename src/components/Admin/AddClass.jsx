@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 
 export default function AddClass() {
     const [classes, setClasses] = useAtom(classesAtom);
-   const [classObject,setClassObject]=useState({class:'',section:'',no_of_students:0})
+   const [classObject,setClassObject]=useState({class:'',class_code:'',section:'',no_of_students:0})
 
     function handleClass(e)
     {
@@ -14,7 +14,7 @@ export default function AddClass() {
 
     function handleClassCode(e)
     {
-        setClassObject({...classObject,class:e.target.value})
+        setClassObject({...classObject,class_code:e.target.value})
     }
 
     function handleSection(e)

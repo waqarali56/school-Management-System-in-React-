@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./admin.module.css";
 
-import { Link } from "react-router-dom";
+import { Link,Outlet } from "react-router-dom";
 import { useAtom } from "jotai";
-import { adminStatus } from "../jotai";
+import { adminLoginStatus } from "../jotai";
 
-export default function AdminDashBoard({ children }) {
+export default function AdminDashBoard() {
 
-  const [adminLoginStatus, setAdminLoginStatus] = useAtom(adminStatus);
+  const [adminLogin, setAdminLogin] = useAtom(adminLoginStatus);
 
 
 
@@ -19,31 +19,17 @@ export default function AdminDashBoard({ children }) {
         <Link to="/Admin/ClassList">
           <button className={styles.item}>Classes</button>
         </Link>
-        <Link to="/Admin/Teachers">
+        <Link to="/Admin/Teacherslist">
           <button className={styles.item}>Teachers</button>
         </Link>
 
-        <Link to="/Admin/Students">
+        <Link to="/Admin/StudentsList">
           <button className={styles.item}>Students</button>
         </Link>
       </div>
 
       <div className={styles.container}>
-        <div className={styles.header}>
-          <div>
-            <h2>Admin Pannel</h2>
-            
-            {adminLoginStatus ? (
-              <Link to="/Home">
-                <button onClick={() => setAdminLoginStatus(false)}>
-                  Log Out
-                </button>
-              </Link>
-            ) : null}
-          </div>
-        </div>
-
-        <div>{children}</div>
+      <Outlet />
       </div>
     </div>
   );

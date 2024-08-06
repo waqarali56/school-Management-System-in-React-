@@ -1,6 +1,7 @@
 
 
 
+
 .teacher_body
 {
   height: inherit;
@@ -214,28 +215,3 @@ display: flex;
     background-color: #e53935;
   }
   
-  
-.pageBtnContainer
-{
-  background-color: cadetblue;
-  height: 40px;
-
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.pageBtnContainer button
-{
-  border:none;
-  background-color: rgb(0, 0, 0);
-  height: 35px;
-  font-size: 14px;
-  color: white;
-  width: 100px; 
-  border-radius: 5px;
-}
-.pageBtnContainer button:hover
-{
-  border: 1px solid white;
-  background-color: #333;
-}
