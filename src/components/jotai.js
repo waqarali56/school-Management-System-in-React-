@@ -2,7 +2,7 @@ import {atom} from 'jotai';
 import { students as initialStudents } from './data.js';
 import { classes as initialClassess } from './data.js';
 import { teachers as initialTeachers } from './data.js';
-
+import {attendanceRecords as initialAttendenceRecord} from './data.js';
 
 
 const getInitialLoginState = (key) => {
@@ -21,9 +21,10 @@ export const loginPasswordAtom=atom('');
 
 
 
-export const ClassAtom=atom('');
+export const showClassAtom=atom('');
 
 
 export const StudentAtom= atom(initialStudents);
 export const teachersAtom= atom(initialTeachers);
 export const classesAtom= atom(initialClassess);
+export const attendanceRecordsAtom= atom(initialAttendenceRecord);

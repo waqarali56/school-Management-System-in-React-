@@ -33,14 +33,17 @@ export default function Home() {
     if (teacher) {
       setTeacherLogin(true);
       alert("Teacher login successful");
-      navigate('/Teacher');
+      localStorage.setItem("loginTeacherEmail",email);
+      navigate('/TeacherDashBoard');
     } else if (admin) {
       setAdminLogin(true);
       alert("Admin login successful");
+      localStorage.setItem("loginAdminEmail",email);
       navigate('/Admin');
     } else if (student) {
       setStudentLogin(true);
       alert("Student login successful");
+      localStorage.setItem("loginStudentEmail",email);
       navigate('/Student');
     } else {
       alert("Invalid email or password");

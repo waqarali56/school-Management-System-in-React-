@@ -2,7 +2,7 @@
 
 .admin_body
 {
-  height: inherit;
+  height: 676px;
  display: flex;
  width: 100%;
 
@@ -101,7 +101,7 @@ display: flex;
   width: 100%;
   border-collapse: collapse;
   font-size: 16px;
-  text-align: left;
+  text-align: center;
   table-layout: fixed; /* Ensures consistent layout */
 }
 
@@ -136,7 +136,6 @@ display: flex;
 .th, .td {
 
   margin: 0;
-  vertical-align: middle; /* or top, bottom */
   height: 50px;
 }
 
@@ -191,8 +190,12 @@ display: flex;
   height: 40px;
 
   display: flex;
-  justify-content: space-evenly;
+ justify-content: center;
   align-items: center;
+}
+.pageBtnContainer p
+{
+   margin: 0px 30px;
 }
 .pageBtnContainer button
 {
@@ -208,6 +211,32 @@ display: flex;
 {
   border: 1px solid white;
   background-color: #333;
+}
+
+.pageBtnContainer .pageIndexBtn
+{
+  border: 1px solid white;
+  background-color: rgb(128, 117, 117);
+  height: 35px;
+  color: white;
+  width: 50px; 
+  border-radius: 5px;
+}
+
+.pageBtnContainer .activePage
+{
+  background-color: #028c00;
+}
+
+.pageBtnContainer .firstPage
+{
+  background-color: #860000;
+  
+}
+.pageBtnContainer .lastPage
+{
+  background-color: #860000;
+   
 }
 
 
@@ -328,7 +357,7 @@ display: flex;
   
     margin: auto;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 5px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
@@ -372,6 +401,16 @@ display: flex;
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
 
   input[type="submit"] {
     width: 100%;

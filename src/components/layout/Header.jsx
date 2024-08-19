@@ -15,7 +15,7 @@ export default function Header() {
   const [studentLogin, setStudentLogin] = useAtom(studentLoginStatus);
 
   return (
-    <header id={styles.header}>
+    <header className={styles.header}>
       <div className={styles.logoTitle}>
         <FaSchool className={styles.logo} />
         <div>KPS</div>

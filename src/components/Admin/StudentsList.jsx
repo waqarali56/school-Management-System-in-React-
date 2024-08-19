@@ -6,38 +6,43 @@ import { Link, Outlet } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
+
 export default function StudentsList() {
   const [students, setStudents] = useAtom(StudentAtom);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemPerPage = 8;
-  const totalPages=(students.length)/(itemPerPage);
+  const itemPerPage = 5;
+  const totalPages = Math.ceil(students.length / itemPerPage);
   const startIndex = (currentPage - 1) * itemPerPage;
-  const endIndex = (currentPage) * itemPerPage;
+  const endIndex = currentPage * itemPerPage;
   const rows = students.slice(startIndex, endIndex);
 
-  
+  const pageIndexes = Array.from({ length: totalPages }, (v, i) => i + 1);
 
   function HandleNextPage() {
-    console.dir(currentPage,students.length+1)
+  
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   }
-  
+
   function HandlePrevsPage() {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   }
-  
+
+  function handlePageClick(page)
+  {
+      setCurrentPage(page);
+  }
+
   function HandleDelete(object) {
     let NewStudents = students.filter(
       (s) => s.registrationNumber !== object.registrationNumber
     );
     setStudents(NewStudents);
   }
-  
 
   return (
     <>
@@ -64,7 +69,7 @@ export default function StudentsList() {
               <tr key={s.registrationNumber} className={styles.tr}>
                 <td className={styles.td}>{s.registrationNumber}</td>
                 <td className={styles.td}>{s.name}</td>
-                <td className={styles.td}>{s.class}</td>
+                <td className={styles.td}>{s.classCode}</td>
                 <td className={styles.td}>{s.gender}</td>
                 <td className={styles.td}>{s.age}</td>
                 <td className={styles.td}>
@@ -84,8 +89,24 @@ export default function StudentsList() {
             ))}
           </tbody>
         </table>
-        <div className={styles.pageBtnContainer}> 
-          <button onClick={HandlePrevsPage}>Prev</button><p>{currentPage}</p><button onClick={HandleNextPage}>Next</button>
+        <div className={styles.pageBtnContainer}>
+        <button className={styles.firstPage} onClick={()=>setCurrentPage(1)}>FirstPage</button>
+          <button onClick={HandlePrevsPage}>Prev</button>
+          <div>
+          {pageIndexes
+            .slice(
+              Math.max(0, currentPage - 2),
+              Math.min(totalPages, currentPage + 2)
+            )
+            .map((page) => (
+              <button key={page} className={`${styles.pageIndexBtn} ${currentPage === page ? styles.activePage : ''}`} onClick={() => handlePageClick(page)}>
+                {page}
+              </button>
+            ))}
+          </div>
+          
+          <button onClick={HandleNextPage}>Next</button>
+          <button className={styles.lastPage} onClick={()=>setCurrentPage(totalPages)}>LastPage</button>
         </div>
       </div>
     </>

@@ -15,24 +15,24 @@ export default function Footer() {
     <h2>Quick Links</h2>
     <ul>
       <li>
-      <Link to="/Home">
+     
           Home
-        </Link>
+        
       </li>
       <li>
-      <Link to="/Admin">
+     
           Admin Pannel
-        </Link>
+       
       </li>
       <li>
-      <Link to="/Teacher">
+     
             Teacher Pannel
-          </Link>
+        
       </li>
       <li>
-      <Link to="/Student">
+    
         Student Pannel
-        </Link>
+       
       </li>
     </ul>
   </div>

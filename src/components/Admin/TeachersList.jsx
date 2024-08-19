@@ -11,8 +11,8 @@ export default function TeachersList() {
     const [teachers, setTeachers] = useAtom(teachersAtom);
     
   const [currentPage, setCurrentPage] = useState(1);
-  const itemPerPage = 8;
-  const totalPages=(teachers.length)/(itemPerPage);
+  const itemPerPage = 4;
+  const totalPages=Math.ceil((teachers.length)/(itemPerPage));
   const startIndex = (currentPage - 1) * itemPerPage;
   const endIndex = (currentPage) * itemPerPage;
   const rows = teachers.slice(startIndex, endIndex);
@@ -66,7 +66,7 @@ export default function TeachersList() {
           </tr>
         </thead>
         <tbody>
-          {teachers.map((s) => (
+          {rows.map((s) => (
           
             <tr key={s.id} className={styles.tr}>
               <td className={styles.td}>{s.id}</td>

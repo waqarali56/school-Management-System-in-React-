@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import styles from "./admin.module.css";
 import { useAtom } from "jotai";
-import { StudentAtom } from "../jotai";
+import { classesAtom, StudentAtom } from "../jotai";
+import { classCode } from "../data";
 
 export default function AddStudent() {
   const [students, setStudents] = useAtom(StudentAtom);
+  const [classes, setClasses] = useAtom(classesAtom);
   const [studentObject, setStudentObject] = useState({
     name: "",
     registrationNumber: "",
-    class: "",
+    classCode: "",
     age: "",
     gender: "",
+    email:'',
+    password:''
   });
 
   function HandleName(e) {
@@ -27,23 +31,35 @@ export default function AddStudent() {
   function HandleAge(e) {
     setStudentObject({ ...studentObject, age: e.target.value });
   }
-  function HandleClass(e) {
-    setStudentObject({ ...studentObject, class: e.target.value });
+  function HandleClassCode(e) {
+    setStudentObject({ ...studentObject, classCode: e.target.value });
+  }
+
+  function HandleEmail(e) {
+    setStudentObject({ ...studentObject, email: e.target.value });
+  }
+ 
+  function HandlePassword(e)
+  {
+    setStudentObject({ ...studentObject, password:e.target.value});
   }
 
   function PushStudent(e) {
     e.preventDefault();
 
+   
+
     const existingStudent = students.find(
       (existingStudent) =>
-        existingStudent.registrationNumber === studentObject.registrationNumber
+        existingStudent.registrationNumber === studentObject.registrationNumber ||
+      existingStudent.email === studentObject.email
     );
-
+    
     if (existingStudent) {
-      alert("Class already exists. Cannot add duplicate.");
+      alert("Student already exists. Please use a unique ID or email.");
     } else {
       setStudents([...students, studentObject]);
-      alert("Class added successfully.");
+      alert("Student added successfully.");
     }
   }
 
@@ -68,6 +84,11 @@ export default function AddStudent() {
           onChange={HandleID}
           required
         />
+        <label for="name">Email:</label>
+        <input type="email" id="email" name="email"  onChange={HandleEmail} required />
+
+         <label for="password">Password:</label>
+         <input type="password" id='password' name="password"  onChange={HandlePassword} required />
 
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" onChange={HandleGender} required>
@@ -77,7 +98,7 @@ export default function AddStudent() {
           <option value="other">Other</option>
         </select>
 
-        <label for="student_id">Age:</label>
+        <label for="student_age">Age:</label>
         <input
           type="number"
           id="age"
@@ -86,13 +107,10 @@ export default function AddStudent() {
           required
         />
 
-        <label for="gender">Class:</label>
-        <select id="class" name="class" onChange={HandleClass} required>
-          <option value="">Select Class</option>
-          <option value="9th">9th</option>
-          <option value="female">10th</option>
-          <option value="other">11th</option>
-          <option value="other">12th</option>
+        <label for="gender">ClassCode:</label>
+        <select id="class" name="class" onChange={HandleClassCode} required>
+          <option value="">Select Code</option>
+          {classes.map((c)=>(<option value={c.classCode}>{c.classCode}</option>))}
         </select>
 
         <input type="submit" value="Add Student" />
