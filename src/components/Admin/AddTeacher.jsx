@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './admin.module.css';
-import { teachersAtom } from '../jotai';
+import { classesAtom, teachersAtom } from '../jotai';
 import { useAtom } from 'jotai';
 
 
@@ -8,13 +8,22 @@ import { useAtom } from 'jotai';
 export default function AddTeacher() {
 
   const [teachers, setTeachers] = useAtom(teachersAtom);
+
+  const [classes, setClasses] = useAtom(classesAtom);
+  const freeClasses=classes.filter(c => c.assignedTeacherId === null)
+
   const [teacherObject, setTeacherObject] = useState({
     name: "",
     id: "",
     email: "",
+    password:'',
     age: "",
     gender: "",
+    assignClass:''
   });
+
+
+
 
   function HandleName(e) {
     setTeacherObject({ ...teacherObject, name: e.target.value });
@@ -33,21 +42,47 @@ export default function AddTeacher() {
   function HandleEmail(e) {
     setTeacherObject({ ...teacherObject, email: e.target.value });
   }
+  function HandleAssignClass(e) {
+    
+    setTeacherObject({ ...teacherObject, assignClass:e.target.value});
+
+  }
+
+  function HandlePassword(e)
+  {
+    setTeacherObject({ ...teacherObject, password:e.target.value});
+  }
+  
 
   function PushTeacher(e) {
     e.preventDefault();
 
+    const selectedClass = freeClasses.find(c => c.classCode === teacherObject.assignClass);
+
+    if (selectedClass) {
+      selectedClass.assignedTeacherId = teacherObject.id;
+      
+      // Update the classes atom
+      const updatedClasses = classes.map(c => 
+        c.classCode === selectedClass.classCode ? selectedClass : c
+      );
+      setClasses(updatedClasses);
+    }
+    
     const existingTeacher = teachers.find(
       (existingTeacher) =>
-        existingTeacher.id === teacherObject.id
+        existingTeacher.id === teacherObject.id ||
+        existingTeacher.email === teacherObject.email
     );
-
+    
     if (existingTeacher) {
-      alert("Teacher already exists. Cannot add duplicate.");
+      alert("Teacher already exists. Please use a unique ID or email.");
     } else {
       setTeachers([...teachers, teacherObject]);
       alert("Teacher added successfully.");
     }
+    
+    
   }
 
   return (
@@ -65,6 +100,16 @@ export default function AddTeacher() {
 
       <label for="name">Email:</label>
       <input type="email" id="email" name="email"  onChange={HandleEmail} required />
+
+      <label for="password">password:</label>
+      <input type="password" id='password' name="password"  onChange={HandlePassword} required />
+
+      <label for="assignClass">Assign Class:</label>
+      <select id="assignClass" name="assignClass"  onChange={HandleAssignClass}  required>
+        <option value="">Select Code</option>
+        {freeClasses.map((f,index)=>(<option key={index} value={f.classCode}>{f.classCode}</option>))}
+      </select>
+
 
       <label for="teacher_age">Age:</label>
       <input type="number" id="teacher_age" name="teacher_age"  onChange={HandleAge} required />

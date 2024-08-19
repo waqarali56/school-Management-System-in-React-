@@ -5,16 +5,16 @@ import { useAtom } from 'jotai';
 
 export default function AddClass() {
     const [classes, setClasses] = useAtom(classesAtom);
-   const [classObject,setClassObject]=useState({class:'',section:'',no_of_students:0})
+   const [classObject,setClassObject]=useState({grade:'',classCode:'',section:'',assignedTeacherId:null})
 
-    function handleClass(e)
+    function handleGrade(e)
     {
-        setClassObject({...classObject,class:e.target.value})
+        setClassObject({...classObject,grade:e.target.value})
     }
 
     function handleClassCode(e)
     {
-        setClassObject({...classObject,class:e.target.value})
+        setClassObject({...classObject,classCode:e.target.value})
     }
 
     function handleSection(e)
@@ -27,7 +27,7 @@ export default function AddClass() {
         e.preventDefault(); 
         
 
-    const existingClass = classes.find(existingClass => existingClass.class_code === classObject.class_code);
+    const existingClass = classes.find(existingClass => existingClass.classCode === classObject.classCode);
 
     if (existingClass) {
         alert("Class already exists. Cannot add duplicate.");
@@ -42,8 +42,8 @@ export default function AddClass() {
         
     <h2>Add Class</h2>
     <form action="/add-class" method="POST" onSubmit={pushObject}>
-      <label for="class">Class:</label>
-      <input type="text" id="class"  onChange={handleClass} name="class" required />
+      <label for="grade">Grade:</label>
+      <input type="text" id="grade"  onChange={handleGrade} name="grade" required />
 
       <label for="section">Section:</label>
       <input type="text" id="section" onChange={handleSection} name="section" required />

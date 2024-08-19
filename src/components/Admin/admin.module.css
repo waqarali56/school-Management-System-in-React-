@@ -2,7 +2,7 @@
 
 .admin_body
 {
-  height: inherit;
+  height: 676px;
  display: flex;
  width: 100%;
 
@@ -87,36 +87,13 @@ display: flex;
 .lists_container
 {
  
-  height:500px;
-  overflow-y: scroll;
-  background-color: rgb(50, 50, 50);
+  height:inherit;
+  background-color: rgb(48, 48, 48);
 }
 
 
 
-.addButtonContainer
-{
- display: flex;
- justify-content: center;
- align-items: center;
- padding: 20px;
- background-color: #5363b4;
-}
-.addButtonContainer button
-{
-  border:none;
-    background-color: rgb(0, 110, 0);
-    margin: auto;
-    height: 47px;
-    font-size: 18px;
-    color: white;
-    width: 120px; 
-    border-radius: 5px;
-}
-.addButtonContainer button:hover
-{
-  background-color: rgb(0, 41, 0);
-}
+
 
 
 
@@ -124,20 +101,42 @@ display: flex;
   width: 100%;
   border-collapse: collapse;
   font-size: 16px;
-  text-align: left;
-
+  text-align: center;
+  table-layout: fixed; /* Ensures consistent layout */
 }
 
 .caption
 {
  
-  height: 40px;
+  height: 50px;
   font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #323d74;
   
+}
+.caption button
+{
+  border:none;
+    background-color: rgb(0, 110, 0);
+    height: 35px;
+    font-size: 14px;
+    color: white;
+    width: 100px; 
+    border-radius: 5px;
+
+}
+
+.caption button:hover
+{
+  background-color: rgb(0, 41, 0);
 }
 
 .th, .td {
-  padding: 12px 15px;
+
+  margin: 0;
+  height: 50px;
 }
 
 
@@ -153,7 +152,6 @@ display: flex;
 
 .tr {
   border-bottom: 1px solid #ddd;
-  
 }
 
 .tr button
@@ -165,7 +163,7 @@ display: flex;
  border-radius: 5px;
  border: none;
  padding: 0;
- margin: 5px;
+ margin: 2px;
  cursor: pointer;
 }
 .tr button:hover
@@ -182,33 +180,71 @@ display: flex;
   background-color: rgb(8, 142, 43);
 }
 
-
-
 .tr:hover {
   background-color: #5f5e5e;
 }
 
-
-
-.adminLogin
+.pageBtnContainer
 {
-     margin: auto;
-    background-color: rgb(77, 77, 74,0.6);
-    height: fit-content;
-    width: 400px;
-    overflow: hidden;
-    border: solid 1px rgb(255, 255, 255);
-}
-.adminLogin .title
-{
-    font-size: 40px;
-    background-color:#5363b4;
+  background-color: cadetblue;
+  height: 40px;
 
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-bottom: solid 1px rgb(255, 255, 255);
+  display: flex;
+ justify-content: center;
+  align-items: center;
 }
+.pageBtnContainer p
+{
+   margin: 0px 30px;
+}
+.pageBtnContainer button
+{
+  border:none;
+  background-color: rgb(0, 0, 0);
+  height: 35px;
+  font-size: 14px;
+  color: white;
+  width: 100px; 
+  border-radius: 5px;
+}
+.pageBtnContainer button:hover
+{
+  border: 1px solid white;
+  background-color: #333;
+}
+
+.pageBtnContainer .pageIndexBtn
+{
+  border: 1px solid white;
+  background-color: rgb(128, 117, 117);
+  height: 35px;
+  color: white;
+  width: 50px; 
+  border-radius: 5px;
+}
+
+.pageBtnContainer .activePage
+{
+  background-color: #028c00;
+}
+
+.pageBtnContainer .firstPage
+{
+  background-color: #860000;
+  
+}
+.pageBtnContainer .lastPage
+{
+  background-color: #860000;
+   
+}
+
+
+
+
+
+
+
 
 .userLogin
 {
@@ -321,7 +357,7 @@ display: flex;
   
     margin: auto;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 5px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 600px;
@@ -365,6 +401,16 @@ display: flex;
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
 
   input[type="submit"] {
     width: 100%;

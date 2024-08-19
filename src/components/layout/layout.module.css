@@ -8,18 +8,43 @@ body{
     overflow-x: hidden;
 }
 
-
-
-#header
+.innerheader
 {
+  background-color: rgb(43, 43, 109);
+}
+
+
+
+
+
+
+.header
+{
+  
+    
     background-color:#4052d6;
     height: 70px;
     width: 100vw;
     margin-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content:space-between;
-    
+    justify-content: space-between;
+}
+.header button
+{
+    background-color: #028c00;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    padding: 0px 15px;
+    margin-right: 40px;
+}
+header button:hover
+{
+    background-color: #035502;
 }
 
 
@@ -37,7 +62,7 @@ body{
 {
     height: 50px;
     width: 50px;
-    margin:auto 25px;
+    margin:auto 40px;
     
 }
 
@@ -71,8 +96,9 @@ body{
 
 
 .mainContainer {
-    background-color: chocolate;
-    height: 670px;  /* Minimum height */
+
+    background-color: rgb(22, 58, 46);
+    min-height: 676px;  /* Minimum height */
     width: 100%;
 }
 
